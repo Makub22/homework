@@ -1,23 +1,51 @@
-h1 = House('ЖК Эльбрус', 10)
-h2 = House('ЖК Акация', 20)
+class House:
 
-print(h1)
-print(h2)
+    def __init__(self, floors):
 
-print(h1 == h2) # __eq__
+        if floors < 0:
 
-h1 = h1 + 10 # __add__
-print(h1)
-print(h1 == h2)
+            raise ValueError("Количество этажей не может быть отрицательным.")
 
-h1 += 10 # __iadd__
-print(h1)
+        self.floors = floors
 
-h2 = 10 + h2 # __radd__
-print(h2)
+    def __eq__(self, other):
 
-print(h1 > h2) # __gt__
-print(h1 >= h2) # __ge__
-print(h1 < h2) # __lt__
-print(h1 <= h2) # __le__
-print(h1 != h2) # __ne__
+        return isinstance(other, House) and self.floors == other.floors
+
+    def __lt__(self, other):
+
+        return isinstance(other, House) and self.floors < other.floors
+
+    def __le__(self, other):
+
+        return isinstance(other, House) and self.floors <= other.floors
+
+    def __gt__(self, other):
+
+        return isinstance(other, House) and self.floors > other.floors
+
+    def __ge__(self, other):
+
+        return isinstance(other, House) and self.floors >= other.floors
+
+    def __ne__(self, other):
+
+        return not self.__eq__(other)
+
+    def __add__(self, value):
+
+        if isinstance(value, int):
+
+            self.floors += value
+
+            return self
+
+        raise TypeError("value должно быть целым числом.")
+
+    def __radd__(self, value):
+
+        return self.__add__(value)
+
+    def __iadd__(self, value):
+
+        return self.__add__(value)
