@@ -56,14 +56,16 @@ class House:
     def __del__(self):
         print(self.name, ' снесён, но он останется в истории')
 
-hightower = House('Башня', 12)
-warehouse = House('Склад', 4)
+hightower = House('ЖК Эльбрус', 10)
+warehouse = House('ЖК Акация', 20)
+towerhouse = House('ЖК Матрешки',20)
 
-print(hightower)
-print(warehouse)
+#print(hightower)
+#print(warehouse)
+#print(towerhouse)
 
 del warehouse
-print(House.houses_history[0], '- первое здание')
-print(House.houses_history[-1], '- последнее здание')
+#(print(House.houses_history[0], '- первое здание')
+#print(House.houses_history[-1], '- последнее здание')
 del hightower
-print(House.houses_history, '- список зданий')
+print(House.houses_history)
